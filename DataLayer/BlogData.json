@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 1,
+    "Username": "user1",
+    "DateCreated": "2023-01-01T12:00:00",
+    "Text": "Sample text 1"
+  },
+  {
+    "Id": 2,
+    "Username": "user2",
+    "DateCreated": "2023-02-01T15:30:00",
+    "Text": "Sample text 2"
+  }
+]
