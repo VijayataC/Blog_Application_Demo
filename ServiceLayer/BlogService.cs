@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
+using System.ComponentModel.DataAnnotations;
 using BlogManagement.DataLayer.ViewModels;
 namespace BlogManagement.ServiceLayer
 {
@@ -20,25 +21,56 @@ namespace BlogManagement.ServiceLayer
 
         public async Task CreateBlogAsync(BlogViewModel blogmodel)
         {
-            var data = await GetAllListAsync();
-            blogmodel.Id = data.Any() ? data.Max(x => x.Id) + 1 : 1; // Auto-increment Id
-            data.Add(blogmodel);
-            await SaveAllAsync(data);
+            try
+            {
+                ValidateModel(blogmodel);
+                var data = await GetAllListAsync();
+                blogmodel.Id = data.Any() ? data.Max(x => x.Id) + 1 : 1; // Auto-increment Id
+                data.Add(blogmodel);
+                await SaveAllAsync(data);
+            }
+            catch (ValidationException ex)
+            {
+                // Catch validation errors and rethrow with custom message
+                throw new Exception($"Validation error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                throw new Exception("Error while creating blog", ex);
+            }
 
         }
 
         public async Task UpdateBlogAsync(BlogViewModel blogViewModel)
         {
-            var data = await GetAllListAsync();
-            var existingModel = data.FirstOrDefault(x => x.Id == blogViewModel.Id);
-            if (existingModel != null)
+            try
             {
-                existingModel.Username = blogViewModel.Username;
-                existingModel.Text = blogViewModel.Text;
-                existingModel.DateCreated =blogViewModel.DateCreated;
-                await SaveAllAsync(data);
+                ValidateModel(blogViewModel);
+
+                var data = await GetAllListAsync();
+                var existingModel = data.FirstOrDefault(x => x.Id == blogViewModel.Id);
+                if (existingModel != null)
+                {
+                    existingModel.Username = blogViewModel.Username;
+                    existingModel.Text = blogViewModel.Text;
+                    existingModel.DateCreated = blogViewModel.DateCreated;
+                    await SaveAllAsync(data);
+                }
+            }
+            catch (ValidationException ex)
+            {
+                // Catch validation errors and rethrow with custom message
+                throw new Exception($"Validation error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                throw new Exception("Error while creating contact", ex);
             }
         }
+
+
 
         public async Task DeleteBlogAsync(int id)
         {
@@ -55,6 +87,7 @@ namespace BlogManagement.ServiceLayer
 
         public async Task<BlogViewModel> GetBlogByIdAsync(int id)
         {
+
             var data = await GetAllListAsync();
             var existingModel = data.FirstOrDefault(x => x.Id == id);
             if (existingModel != null)
@@ -66,5 +99,13 @@ namespace BlogManagement.ServiceLayer
                 return new BlogViewModel();
             }
         }
+
+        private void ValidateModel(object model)
+        {
+            var validationContext = new ValidationContext(model, null, null);
+            Validator.ValidateObject(model, validationContext, validateAllProperties: true);
+        }
     }
 }
+
+

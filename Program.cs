@@ -1,3 +1,4 @@
+using BlogManagement.Helpers;
 using BlogManagement.DataLayer.ViewModels;
 using BlogManagement.ServiceLayer;
 
@@ -29,6 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 //app.UseAuthorization();
