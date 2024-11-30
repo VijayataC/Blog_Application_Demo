@@ -1,0 +1,24 @@
+<div
+  class="modal fade"
+  [class.show]="showModal"
+  style="display: block; background: rgba(0,0,0,0.5);"
+  *ngIf="showModal"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="btn-close" (click)="onCancel()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the following blog?</p>
+        <p><strong>User:</strong> {{ blog?.username }}</p>
+        <p><strong>Text:</strong> {{ blog?.text }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="onConfirm()">Delete</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

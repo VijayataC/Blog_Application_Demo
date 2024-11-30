@@ -8,19 +8,13 @@
   {
     "Id": 2,
     "Username": "Ruha",
-    "DateCreated": "2024-11-09T00:00:00",
-    "Text": "Ruha\u0027s blog 123"
+    "DateCreated": "2024-11-27T00:00:00",
+    "Text": "this is Ruha\u0027s blog"
   },
   {
     "Id": 3,
-    "Username": "Ganesh Gujar",
-    "DateCreated": "2024-11-16T00:00:00",
-    "Text": "Ganesh\u0027s blog 13234n rfhrifhrgrgr text"
-  },
-  {
-    "Id": 4,
-    "Username": "Sachin",
-    "DateCreated": "2024-11-21T00:00:00",
-    "Text": "test123"
+    "Username": "vsgws",
+    "DateCreated": "2024-11-19T00:00:00",
+    "Text": "klfla"
   }
 ]

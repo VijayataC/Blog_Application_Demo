@@ -1,0 +1,14 @@
+.blog-list-container {
+    max-height: 400px;
+    /* Set maximum height */
+    overflow-y: auto;
+    /* Add vertical scrollbar */
+    padding-right: 10px;
+    /* Optional: Space to avoid overlapping scrollbar */
+    border: 1px solid #ccc;
+    /* Optional: Add border for clarity */
+    border-radius: 5px;
+    /* Optional: Add border radius */
+    background-color: #f9f9f9;
+    /* Optional: Add background color */
+}

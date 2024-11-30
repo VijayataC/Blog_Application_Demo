@@ -1,0 +1,11 @@
+<div class="blog-list-container">
+  <div *ngFor="let blog of blogs" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ blog.text }}</h5>
+      <p>Created by: {{ blog.username }}</p>
+      <p>Created on: {{ blog.dateCreated | date }}</p>
+      <button class="btn btn-info btn-sm" (click)="onEdit(blog)">Edit</button>
+      <button class="btn btn-danger btn-sm" (click)="onDelete(blog)">Delete</button>
+    </div>
+  </div>
+</div>

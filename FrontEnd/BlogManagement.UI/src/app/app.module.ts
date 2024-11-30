@@ -5,12 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { exceptionInterceptor } from './exception.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { AddUpdateComponent } from './add-update/add-update.component';
+import { DeleteBlogComponent } from './delete-blog/delete-blog.component';
+import { DispalyBlogsComponent } from './dispaly-blogs/dispaly-blogs.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddUpdateComponent,
+    DeleteBlogComponent,
+    DispalyBlogsComponent
   ],
   imports: [
     CommonModule,

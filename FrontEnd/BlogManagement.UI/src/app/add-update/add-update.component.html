@@ -1,0 +1,55 @@
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true" #formModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formModalLabel">{{ edit ? 'Edit Blog' : 'Add Blog' }}</h5>
+        <button type="button" class="btn-close" id="closeModalButton" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">User Name</label>
+            <input formControlName="username" type="text" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Text</label>
+            <input formControlName="text" type="text" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="dateCreated" class="form-label">Date Created</label>
+            <input formControlName="dateCreated" type="date" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Success Message Modal -->
+<div
+  class="modal fade"
+  id="successModal"
+  tabindex="-1"
+  aria-labelledby="successModalLabel"
+  aria-hidden="true"
+  [class.show]="showSuccessModal"
+  style="display: block; background: rgba(0, 0, 0, 0.5);"
+  *ngIf="showSuccessModal"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="btn-close" (click)="closeSuccessModal()"></button>
+      </div>
+      <div class="modal-body">
+        {{ successMessage }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
