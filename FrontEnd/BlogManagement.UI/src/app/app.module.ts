@@ -26,7 +26,7 @@ import { DispalyBlogsComponent } from './dispaly-blogs/dispaly-blogs.component';
   ],
   providers:[
     HttpClientModule,
-    // {provide : HTTP_INTERCEPTORS, useClass :exceptionInterceptor, multi: true },
+     {provide : HTTP_INTERCEPTORS, useClass :exceptionInterceptor, multi: true },
     provideHttpClient(),
     DatePipe
   ],

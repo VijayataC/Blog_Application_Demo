@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.ComponentModel.DataAnnotations;
 using BlogManagement.DataLayer.ViewModels;
 namespace BlogManagement.ServiceLayer
@@ -9,7 +7,11 @@ namespace BlogManagement.ServiceLayer
     {
         private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), "BlogData.json");
 
-
+        
+        /// <summary>
+        /// Get list
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<BlogViewModel>> GetAllListAsync()
         {
             if (!File.Exists(_filePath)) return new List<BlogViewModel>();
@@ -19,6 +21,12 @@ namespace BlogManagement.ServiceLayer
 
         }
 
+        /// <summary>
+        /// Create blog
+        /// </summary>
+        /// <param name="blogmodel"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task CreateBlogAsync(BlogViewModel blogmodel)
         {
             try
@@ -42,6 +50,12 @@ namespace BlogManagement.ServiceLayer
 
         }
 
+        /// <summary>
+        /// Update blog
+        /// </summary>
+        /// <param name="blogViewModel"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task UpdateBlogAsync(BlogViewModel blogViewModel)
         {
             try
@@ -71,7 +85,11 @@ namespace BlogManagement.ServiceLayer
         }
 
 
-
+        /// <summary>
+        /// Delete blog
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task DeleteBlogAsync(int id)
         {
             var data = await GetAllListAsync();
@@ -79,12 +97,22 @@ namespace BlogManagement.ServiceLayer
             await SaveAllAsync(data);
         }
 
+        /// <summary>
+        /// Save blog
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         private async Task SaveAllAsync(List<BlogViewModel> data)
         {
             var jsonData = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             await File.WriteAllTextAsync(_filePath, jsonData);
         }
 
+        /// <summary>
+        /// Get blog by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<BlogViewModel> GetBlogByIdAsync(int id)
         {
 

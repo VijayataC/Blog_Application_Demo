@@ -98,4 +98,9 @@ export class AddUpdateComponent implements AfterViewInit {
     this.showSuccessModal = false; // Hide the modal
     this.successMessage = ''; // Clear the message
   }
+
+  onModalCloseButton()
+  {
+    this.blogForm.reset();
+  }
 }

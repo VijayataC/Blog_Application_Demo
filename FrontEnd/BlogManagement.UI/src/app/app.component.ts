@@ -7,12 +7,13 @@ import { DispalyBlogsComponent } from './dispaly-blogs/dispaly-blogs.component';
 import { AddUpdateComponent } from './add-update/add-update.component';
 import { DeleteBlogComponent } from './delete-blog/delete-blog.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, DispalyBlogsComponent, AddUpdateComponent, DeleteBlogComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
 

@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="formModalLabel">{{ edit ? 'Edit Blog' : 'Add Blog' }}</h5>
-        <button type="button" class="btn-close" id="closeModalButton" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" id="closeModalButton" data-bs-dismiss="modal" (click)="onModalCloseButton()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
